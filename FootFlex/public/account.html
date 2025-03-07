@@ -143,26 +143,35 @@
         });
 
         document.getElementById('RegForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
+    event.preventDefault();
 
-            const username = document.getElementById('RegForm').elements[0].value;
-            const email = document.getElementById('RegForm').elements[1].value;
-            const password = document.getElementById('RegForm').elements[2].value;
+    const username = document.getElementById('RegForm').elements[0].value;
+    const email = document.getElementById('RegForm').elements[1].value;
+    const password = document.getElementById('RegForm').elements[2].value;
 
-            try {
-                const response = await fetch(`/add-user?username=${username}&email=${email}&password=${password}`);
-                const data = await response.json();
-                console.log(data);
-                if(response.ok){
-                    alert(data.message);
-                } else{
-                  alert(data.error);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert("An error occurred during registration.");
-            }
+    try {
+        const response = await fetch(`/users`, {
+            method: 'POST',  // POST method for creating a new user
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, email, password }),  // Sending data as JSON
         });
+
+        const data = await response.json();
+        console.log(data);
+
+        if (response.ok) {
+            alert(data.message);
+        } else {
+            alert(data.error);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert("An error occurred during registration.");
+    }
+});
+
     </script>
 </body>
 </html>

@@ -37,10 +37,15 @@ app.post('/users', (req, res) => {
   users.push(newUser);
 
   // Save users to the file
-  fs.writeFileSync(usersFile, JSON.stringify(users, null, 2));
-
-  res.json({ message: 'User added successfully.', user: newUser });
+  try {
+    fs.writeFileSync(usersFile, JSON.stringify(users, null, 2));
+    res.json({ message: 'User added successfully.', user: newUser });
+  } catch (error) {
+    console.error('Error saving user data:', error);
+    res.status(500).json({ error: 'An error occurred while saving the user.' });
+  }
 });
+
 
 // PUT to update a user
 app.put('/users/:username', (req, res) => {
