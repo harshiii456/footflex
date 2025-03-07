@@ -14,14 +14,16 @@ if (fs.existsSync(usersFile)) {
 }
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json()); // To parse JSON bodies
 
+// GET all users
 app.get('/users', (req, res) => {
   res.json(users);
 });
 
-// API to add a user and save to file
-app.get('/add-user', (req, res) => {
-  const { username, email, password } = req.query;
+// POST a new user
+app.post('/users', (req, res) => {
+  const { username, email, password } = req.body;
 
   if (!username || !email || !password) {
     return res.status(400).json({ error: 'Username, email, and password are required.' });
@@ -37,7 +39,45 @@ app.get('/add-user', (req, res) => {
   // Save users to the file
   fs.writeFileSync(usersFile, JSON.stringify(users, null, 2));
 
-  res.json({ message: 'User added successfully.', user: newUser }); 
+  res.json({ message: 'User added successfully.', user: newUser });
+});
+
+// PUT to update a user
+app.put('/users/:username', (req, res) => {
+  const { username } = req.params;
+  const { email, password } = req.body;
+
+  const user = users.find(user => user.username === username);
+
+  if (!user) {
+    return res.status(404).json({ error: 'User not found.' });
+  }
+
+  if (email) user.email = email;
+  if (password) user.password = password;
+
+  // Save users to the file
+  fs.writeFileSync(usersFile, JSON.stringify(users, null, 2));
+
+  res.json({ message: 'User updated successfully.', user });
+});
+
+// DELETE a user
+app.delete('/users/:username', (req, res) => {
+  const { username } = req.params;
+
+  const userIndex = users.findIndex(user => user.username === username);
+
+  if (userIndex === -1) {
+    return res.status(404).json({ error: 'User not found.' });
+  }
+
+  users.splice(userIndex, 1);
+
+  // Save users to the file
+  fs.writeFileSync(usersFile, JSON.stringify(users, null, 2));
+
+  res.json({ message: 'User deleted successfully.' });
 });
 
 // Basic login
@@ -51,9 +91,9 @@ app.get('/login', (req, res) => {
   const user = users.find(user => user.username === username && user.password === password);
 
   if (user) {
-    res.json({ message: 'Login successful.', user });
+    res.json({ success: true, message: 'Login successful.' });
   } else {
-    res.status(401).json({ error: 'Invalid username or password.' });
+    res.status(401).json({ success: false, error: 'Invalid username or password.' });
   }
 });
 

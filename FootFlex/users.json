@@ -13,5 +13,15 @@
     "username": "abcd",
     "email": "ket@gmail.com",
     "password": "3456"
+  },
+  {
+    "username": "abcde",
+    "email": "harshita234@gmail.com",
+    "password": "1234"
+  },
+  {
+    "username": "rishu",
+    "email": "r@g.com",
+    "password": "123"
   }
 ]
