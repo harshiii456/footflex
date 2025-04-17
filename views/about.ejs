@@ -1,86 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>About Us - FootFlex</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <style>
-    .card-hover:hover {
-      transform: translateY(-8px);
-      transition: all 0.4s ease;
-    }
-  </style>
-</head>
-<body class="bg-gray-100 text-gray-800 font-sans">
+  <head>
+    <meta charset="UTF-8" />
+    <title>About Us - FootFlex</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <style>
+      body {
+        background-color: #0e0e0e;
+        font-family: 'Segoe UI', sans-serif;
+        color: #ffffff;
+      }
 
-  <!-- Header -->
-  <header class="bg-white shadow-sm sticky top-0 z-50">
-    <nav class="max-w-7xl mx-auto flex items-center justify-between p-4 md:px-8">
-      <div class="text-2xl font-bold text-indigo-600">FootFlex</div>
-      <div class="space-x-6 text-gray-700 font-medium hidden md:block">
-        <a href="/" class="hover:text-indigo-600 transition">Home</a>
-        <a href="/shop" class="hover:text-indigo-600 transition">Shop</a>
-        <a href="/about" class="text-indigo-600 font-semibold">About</a>
-        <a href="/contact" class="hover:text-indigo-600 transition">Contact</a>
+      .card-hover {
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+      }
+
+      .card-hover:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(255, 107, 0, 0.4);
+      }
+
+      .img-hover:hover {
+        transform: scale(1.05);
+        transition: transform 0.4s ease;
+      }
+
+      .nav-link-active {
+        color: #ff6b00;
+        font-weight: bold;
+      }
+
+      .orange-glow-border {
+        border: 1px solid #ff6b00;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="bg-black shadow-[0_4px_12px_rgba(255,107,0,0.4)] sticky top-0 z-50 border-b border-orange-500">
+      <nav class="max-w-7xl mx-auto flex items-center justify-between p-4 md:px-8">
+        <div class="text-2xl font-bold text-orange-500">FootFlex</div>
+        <div class="space-x-6 text-gray-300 font-medium hidden md:block">
+          <a href="/" class="hover:text-orange-500 transition">Home</a>
+          <a href="/shop" class="hover:text-orange-500 transition">Shop</a>
+          <a href="/about" class="nav-link-active">About</a>
+          <a href="/contact" class="hover:text-orange-500 transition">Contact</a>
+        </div>
+      </nav>
+    </header>
+    
+
+    <!-- About Section -->
+    <section class="py-20 px-6 md:px-20">
+      <div class="text-center mb-16" data-aos="fade-down">
+        <h1 class="text-5xl font-extrabold text-orange-500 mb-4">Meet the FootFlex Crew</h1>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto">Crafting every step with vision and precision. Our team is all about creativity, code, and comfort — let’s introduce the minds behind the magic.</p>
       </div>
-    </nav>
-  </header>
 
-  <!-- About Section -->
-  <section class="py-20 px-6 md:px-20 bg-white">
-    <div class="text-center mb-16" data-aos="fade-down">
-      <h1 class="text-5xl font-extrabold text-gray-800 mb-4">Meet the FootFlex Crew</h1>
-      <p class="text-xl text-gray-600 max-w-3xl mx-auto">We blend style, tech, and comfort to revolutionize your footwear experience. Our squad is all about innovation and impact—one shoe at a time.</p>
-    </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <!-- Card Template -->
+        <div class="bg-black rounded-2xl shadow-xl overflow-hidden card-hover orange-glow-border" data-aos="fade-up">
+          <img src="/images/harshita.jpeg" alt="Team Lead" class="w-full h-56 object-cover img-hover" />
+          <div class="p-6">
+            <h2 class="text-xl font-semibold text-white mb-2">Team Lead - Harshita</h2>
+            <p class="text-gray-400 text-sm">Leading with clarity and hustle, Harshita ensures we always stay a step ahead in innovation and execution.</p>
+          </div>
+        </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-      <!-- Card Template -->
-      <div class="bg-white rounded-2xl shadow-2xl overflow-hidden card-hover" data-aos="fade-up">
-        <img src="/images/harshita.jpeg" alt="Team Lead" class="w-full h-56 object-cover" />
-        <div class="p-6">
-          <h2 class="text-xl font-semibold text-gray-800 mb-2">Team Lead - Harshita</h2>
-          <p class="text-gray-600 text-sm">Driving the team with a clear vision and relentless energy, our Team Lead ensures that every stride we take is towards excellence and innovation.</p>
+        <div class="bg-black rounded-2xl shadow-xl overflow-hidden card-hover orange-glow-border" data-aos="fade-up" data-aos-delay="100">
+          <img src="/images/keshav.jpeg" alt="Design Lead" class="w-full h-56 object-cover img-hover" />
+          <div class="p-6">
+            <h2 class="text-xl font-semibold text-white mb-2">Design Lead - Keshav</h2>
+            <p class="text-gray-400 text-sm">A flair for aesthetics, Keshav crafts every interface and silhouette with purpose and personality.</p>
+          </div>
+        </div>
+
+        <div class="bg-black rounded-2xl shadow-xl overflow-hidden card-hover orange-glow-border" data-aos="fade-up" data-aos-delay="200">
+          <img src="/images/ketan.jpeg" alt="Tech Lead" class="w-full h-56 object-cover img-hover" />
+          <div class="p-6">
+            <h2 class="text-xl font-semibold text-white mb-2">Tech Lead - Ketan</h2>
+            <p class="text-gray-400 text-sm">Ketan is the engine behind the code — bringing seamless functionality and innovation to every line.</p>
+          </div>
+        </div>
+
+        <div class="bg-black rounded-2xl shadow-xl overflow-hidden card-hover orange-glow-border" data-aos="fade-up" data-aos-delay="300">
+          <img src="/images/dhruv.jpeg" alt="Marketing" class="w-full h-56 object-cover img-hover" />
+          <div class="p-6">
+            <h2 class="text-xl font-semibold text-white mb-2">Marketing Strategist - Dhruv</h2>
+            <p class="text-gray-400 text-sm">From buzz to brand, Dhruv connects the FootFlex vibe with fans through sharp strategy and storytelling.</p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="bg-white rounded-2xl shadow-2xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="100">
-        <img src="/images/keshav.jpeg" alt="Design Lead" class="w-full h-56 object-cover" />
-        <div class="p-6">
-          <h2 class="text-xl font-semibold text-gray-800 mb-2">Design Lead - Keshav</h2>
-          <p class="text-gray-600 text-sm">Blending creativity with functionality, our Design Lead crafts visually stunning and user-friendly footwear designs that resonate with every step.</p>
+    <!-- Footer -->
+    <footer class="bg-black text-gray-400 py-6 mt-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-20 text-center">
+        <p>&copy; 2025 <span class="text-orange-500 font-semibold">FootFlex</span>. All rights reserved.</p>
+        <div class="mt-2 text-sm">
+          <a href="/privacy-policy" class="hover:underline hover:text-orange-500">Privacy Policy</a> | 
+          <a href="/terms" class="hover:underline hover:text-orange-500">Terms of Service</a>
         </div>
       </div>
+    </footer>
 
-      <div class="bg-white rounded-2xl shadow-2xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="200">
-        <img src="/images/ketan.jpeg" alt="Tech Lead" class="w-full h-56 object-cover" />
-        <div class="p-6">
-          <h2 class="text-xl font-semibold text-gray-800 mb-2">Tech Lead - Ketan</h2>
-          <p class="text-gray-600 text-sm">Driving innovation through code, our Tech Lead ensures seamless functionality and performance across our digital platforms and systems.</p>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-2xl shadow-2xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="300">
-        <img src="/images/dhruv.jpeg" alt="Marketing" class="w-full h-56 object-cover" />
-        <div class="p-6">
-          <h2 class="text-xl font-semibold text-gray-800 mb-2">Anti Virus - Dhruv</h2>
-          <p class="text-gray-600 text-sm">Bridging creativity and analytics, our Marketing Strategist crafts compelling campaigns that connect FootFlex with footwear lovers worldwide.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-300 py-6 mt-20">
-    <div class="max-w-7xl mx-auto px-6 md:px-20 text-center">
-      <p>&copy; 2025 <span class="text-indigo-400 font-semibold">FootFlex</span>. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script>
-    AOS.init({ duration: 1000 });
-  </script>
-</body>
+    <script>
+      AOS.init({ duration: 1000 });
+    </script>
+  </body>
 </html>
