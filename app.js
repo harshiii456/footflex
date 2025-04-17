@@ -7,25 +7,14 @@ const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 const path = require('path');
 
-// Route files
-const productRoutes = require('./routes/productRoutes');
-const userRoutes = require('./routes/userRoutes');
-const cartRoutes = require('./routes/cartRoutes');
-const orderRoutes = require('./routes/orderRoutes');
-const couponRoutes = require('./routes/couponRoutes');
-const gameRoutes = require('./routes/gameRoutes');
-const pageRoutes = require('./routes/pages'); // ✅ REQUIRED!
-
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3300;
 
-// MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => console.log('MongoDB connected'))
+// DB Connection
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
 // View Engine Setup
@@ -43,7 +32,17 @@ app.use(session({
   saveUninitialized: true,
 }));
 
-// Routes for APIs
+// Route Imports
+const pageRoutes = require('./routes/pages');
+const productRoutes = require('./routes/productRoutes');
+const userRoutes = require('./routes/userRoutes');
+const cartRoutes = require('./routes/cartRoutes');
+const orderRoutes = require('./routes/orderRoutes');
+const couponRoutes = require('./routes/couponRoutes');
+const gameRoutes = require('./routes/gameRoutes');
+
+// Route Usage
+app.use('/', pageRoutes);
 app.use('/products', productRoutes);
 app.use('/users', userRoutes);
 app.use('/cart', cartRoutes);
@@ -51,15 +50,12 @@ app.use('/orders', orderRoutes);
 app.use('/coupons', couponRoutes);
 app.use('/game', gameRoutes);
 
-// ✅ Routes for Pages (EJS Views)
-app.use('/', pageRoutes);
+// ✅ Fixed: Replace 404 render with plain response
+app.use((res) => {
+  res.status(404).send('Page Not Found');
 
-// 404 fallback
-app.use((req, res) => {
-  res.status(404).render('404'); // Optional: create views/404.ejs
 });
 
-// Start server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
