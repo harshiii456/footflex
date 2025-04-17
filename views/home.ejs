@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shoe Store</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const track = document.querySelector('.carousel-track');
+            const leftBtn = document.querySelector('.left-btn');
+            const rightBtn = document.querySelector('.right-btn');
+            const productCard = document.querySelector('.product-card');
+            
+            let scrollAmount = productCard.offsetWidth + 20; // 20 = gap
+            
+            // Manual Scroll with buttons
+            leftBtn.addEventListener('click', () => {
+                track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+    
+            rightBtn.addEventListener('click', () => {
+                track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+    
+            // Update scrollAmount if window is resized
+            window.addEventListener('resize', () => {
+                scrollAmount = productCard.offsetWidth + 20;
+            });
+        });
+    </script>
+    
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">FootFlex</div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/shop">Shop</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Step Into Style</h1>
+            <p>Explore the latest collection of premium shoes</p>
+            <a href="/shop" class="cta-button">Shop Now</a>
+        </div>
+    </section>
+
+    <section class="products-section">
+        <h2>Featured Shoes</h2>
+        <div class="carousel-wrapper">
+            <!-- Correct button class names -->
+            <button class="carousel-btn left-btn">&#8249;</button>
+        
+            <div class="carousel-track-wrapper">
+                <div class="carousel-track">
+                    <div class="product-card">
+                        <img src="/images/1.jpg" alt="Shoe 1">
+                        <h3>Air Street</h3>
+                        <p class="price">$79.99</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/2.jpg" alt="Shoe 2">
+                        <h3>Urban Flow</h3>
+                        <p class="price">$89.99</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/3.jpg" alt="Shoe 1">
+                        <h3>Air Street</h3>
+                        <p class="price">$79.99</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/4.jpg" alt="Shoe 4">
+                        <h3>Urban Flow</h3>
+                        <p class="price">$89.99</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/5.jpg" alt="Shoe 5">
+                        <h3>Urban Flow</h3>
+                        <p class="price">$89.99</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/6.jpg" alt="Shoe 6">
+                        <h3>Urban Flow</h3>
+                        <p class="price">$89.99</p>
+                        <button>Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="/images/7.jpg" alt="Shoe 7">
+                        <h3>Urban Flow</h3>
+                        <p class="price">$89.99</p>
+                        <button>Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Correct button class names -->
+            <button class="carousel-btn right-btn">&#8250;</button>
+        </div>
+    </section>
+
+    <section class="survey-section">
+        <h2>We Value Your Feedback</h2>
+        <p>Help us improve your experience by completing this quick survey.</p>
+        <form class="survey-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="email">Email (optional)</label>
+                <input type="email" id="email" name="email" placeholder="Your email">
+            </div>
+    
+            <div class="form-group">
+                <label for="rating">How would you rate our store?</label>
+                <select id="rating" name="rating" required>
+                    <option value="">Select</option>
+                    <option value="5">Excellent</option>
+                    <option value="4">Good</option>
+                    <option value="3">Average</option>
+                    <option value="2">Below Average</option>
+                    <option value="1">Poor</option>
+                </select>
+            </div>
+    
+            <div class="form-group">
+                <label for="comments">Any suggestions?</label>
+                <textarea id="comments" name="comments" rows="4" placeholder="Your feedback..."></textarea>
+            </div>
+    
+            <button type="submit" class="submit-btn">Submit Feedback</button>
+        </form>
+    </section>
+    
+    
+    <%- include('partials/footer') %>
+
+</body>
+</html>
