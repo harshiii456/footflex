@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+    <section class="signup-page">
+        <div class="signup-form">
+            <h1 class="signup-title">Create Your Account</h1>
+            <p class="signup-subtitle">Join us and explore the best shoes in the game!</p>
+
+            <form id="signup-form" action="/signup" method="post">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="password" name="password" placeholder="Create Password" required>
+                
+                <button type="submit" class="cta-button">Sign Up</button>
+            </form>
+            
+
+            <p class="signup-footer">
+                Already have an account? <a href="/login">Login here</a>
+            </p>
+        </div>
+    </section>
+
+    <%- include('partials/footer') %>
+</body>
+</html>
